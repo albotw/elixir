@@ -1,0 +1,89 @@
+Concaténation de listes: [] ++ []
+Concaténation de strings ou de bins: "" <> ""
+
+ATTENTION: différence entre && et and
+    and: comportement standard
+    && : retourne la valeur de droite si la valeur de gauche est "vraie"
+
+ATTENTION: différence entre || et or
+    or: comportement standard
+    ||: retourne la valeur de gauche si elle est "vraie", sinon retourne la valeur de droite
+
+format recommandé pour les variables, nom de fichiers, fonctions: snake_case
+format recommandé pour les modules: CamelCase
+
+null => nil
+
+Dans un string, #{...} permet d'évaluer le code a l'intérieur des {}
+
+Définir une fonction lambda:
+greet = fn name ->
+    greetings = "Hello, #{name}"
+    "#{greetings}!, enjoy your stay."
+end
+
+Appeler une fonction: fonction.(<params>)
+
+Comme c'est un langage fonctionnel, les fonctions lambda sont aussi des valeurs.
+
+Les fonctions nommées sont définies dans un module.
+Les variables avec une majuscule sont considérés comme des alias qui seront transformés en atome à la compilation.
+Pour appeler une fonction: Module.fonction(<args>)
+
+Fichier .ex => compilable
+Fichier .exs => script
+
+Dans un module, on peut définr des attributs en mettant un @ devant la variable
+Un attribut équivaut à une annotation, du stockage temp ou une constante.
+Si on veut importer une fonction d'un module, on doit indiquer son arité (le nb de params)
+
+pour mapper une fonction vers une variable, on utilise la notation
+&<Module>.<fonction>/<arité>
+
+Pour ne pas rebinder une variable dans un match avec l'opérateur =, on met un ^ devant la variable
+^x = 2 => force le match plutot que l'assignation.
+
+On peut utiliser de la destructuration de chaine:
+"Hello, " <> name = "Hello, Jane",
+name contiendra "Jane".
+
+Tuple: {<clé>, <valeur>}. On peut utiliser les atomes comme clé pour des messages d'erreur.
+On peut utiliser la destructuration de valeurs pour récupérer une valeur
+Une bonne pratique consiste a retourner un tuple {:ok, <valeur>} quand une fonction retourne correctement, et {:error, <code erreur>} quand elle plante.
+
+En elixir, les listes sont représentées comme des listes chainées.
+Le dernier élément d'une liste est une liste vide, utile pour la récursion.
+
+On peut utiliser des patterns dans des listes pour faire de la destructuration:
+[a, a, 4] => matche une liste avec les 2 permiers éléments égaux et le 3e qui vaut 4.
+
+On peut utiliser _ pour ignorer des valeurs: [_, a, _] sort la 2e valeur de la liste.
+
+On retrouve le splitter d'OCaml, |
+ex: [head | tail] = [:a, :b, :c, :d]
+    head => :a
+    tail => [:b, :c, :d]
+
+On peut récupérer plusieurs valeurs d'une liste avec le pattern [a, b, | tail]
+
+Map: 
+%{
+    clé: valeur,
+}
+
+%{
+    :atome => valeur
+}
+
+On peut imbriquer une map dans une map
+
+Pattern matching des maps:
+abilities = %{str: 16, dex: 12, int: 10}
+%{str: str_value} = abilities
+=> str_value = 16
+
+KeyList: Similaire à une map mais permet des clés en doublon si elles ont des valeurs !=
+ex: [a: 1, a: 12]
+
+
+
