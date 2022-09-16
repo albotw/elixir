@@ -29,6 +29,7 @@ Comme c'est un langage fonctionnel, les fonctions lambda sont aussi des valeurs.
 Les fonctions nommées sont définies dans un module.
 Les variables avec une majuscule sont considérés comme des alias qui seront transformés en atome à la compilation.
 Pour appeler une fonction: Module.fonction(<args>)
+Il ne faut pas mettre d'espace entre le nom de la fonction et les parenthèses.
 
 Fichier .ex => compilable
 Fichier .exs => script
@@ -85,5 +86,9 @@ abilities = %{str: 16, dex: 12, int: 10}
 KeyList: Similaire à une map mais permet des clés en doublon si elles ont des valeurs !=
 ex: [a: 1, a: 12]
 
+Clauses de gardes: définies avec le mot clé when.
+def greater (number, other_number) when number >= other_number, do: number
+def greater (_, other_number), do: other_number
 
-
+Il est possible de définir un if en tant que one liner:
+if (number >= other_number, do: number, else: other_number)
